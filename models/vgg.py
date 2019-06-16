@@ -3,7 +3,7 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization
 
 
-def VGG16(input_shape=(224,224,3), num_classes):
+def VGG16(num_classes, input_shape=(224,224,3)):
 	model = Sequential()
 	
 	# first block, output=(112,112,64)
@@ -17,7 +17,7 @@ def VGG16(input_shape=(224,224,3), num_classes):
 					 padding='same',
 					 activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2),
-						   stride=2))
+						   strides=2))
 
 	# second block, output=(56,56,128)
 	model.add(Conv2D(filters=128,
@@ -29,7 +29,7 @@ def VGG16(input_shape=(224,224,3), num_classes):
 					 padding='same',
 					 activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2),
-						   stride=2))
+						   strides=2))
 
 	# third block, output=(28,28,256)
 	model.add(Conv2D(filters=256,
@@ -45,7 +45,7 @@ def VGG16(input_shape=(224,224,3), num_classes):
 					 padding='same',
 					 activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2),
-						   stride=2))
+						   strides=2))
 
 	# fourth block, output=(14,14,512)
 	model.add(Conv2D(filters=512,
@@ -61,7 +61,7 @@ def VGG16(input_shape=(224,224,3), num_classes):
 					 padding='same',
 					 activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2),
-						   stride=2))
+						   strides=2))
 
 	# fifth block, output=(7,7,512)
 	model.add(Conv2D(filters=512,
@@ -77,7 +77,7 @@ def VGG16(input_shape=(224,224,3), num_classes):
 					 padding='same',
 					 activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2),
-						   stride=2))
+						   strides=2))
 
 	# FC layers
 	model.add(Flatten())
@@ -87,7 +87,7 @@ def VGG16(input_shape=(224,224,3), num_classes):
 	return model
 
 
-def VGG19(input_shape=(224,224,3), num_classes):
+def VGG19(num_classes, input_shape=(224,224,3)):
 	model = Sequential()
 
 	# first block, output=(112,112,64)
@@ -101,7 +101,7 @@ def VGG19(input_shape=(224,224,3), num_classes):
 					 padding='same',
 					 activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2),
-						   stride=2))
+						   strides=2))
 
 	# second block, output=(56,56,128)
 	model.add(Conv2D(filters=128,
@@ -113,7 +113,7 @@ def VGG19(input_shape=(224,224,3), num_classes):
 					 padding='same',
 					 activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2),
-						   stride=2))
+						   strides=2))
 
 	# third block, output=(28,28,256)
 	model.add(Conv2D(filters=256,
@@ -133,7 +133,7 @@ def VGG19(input_shape=(224,224,3), num_classes):
 					 padding='same',
 					 activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2),
-						   stride=2))
+						   strides=2))
 
 	# fourth block, output=(14,14,512)
 	model.add(Conv2D(filters=512,
@@ -153,7 +153,7 @@ def VGG19(input_shape=(224,224,3), num_classes):
 					 padding='same',
 					 activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2),
-						   stride=2))
+						   strides=2))
 
 	# fifth block, output=(7,7,512)
 	model.add(Conv2D(filters=512,
@@ -173,7 +173,7 @@ def VGG19(input_shape=(224,224,3), num_classes):
 					 padding='same',
 					 activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2,2),
-						   stride=2))
+						   strides=2))
 
 	# FC layers
 	model.add(Flatten())

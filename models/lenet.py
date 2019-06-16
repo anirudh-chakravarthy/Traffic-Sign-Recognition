@@ -4,7 +4,7 @@ from keras.layers import Conv2D, AveragePooling2D, Flatten, Dense,\
 							 Dropout, BatchNormalization, MaxPooling2D
 
 
-def LeNet_baseline(input_shape=(32,32,1), num_classes):
+def LeNet_baseline(num_classes, input_shape=(32,32,1)):
 	'''
 	Standard LeNet-5 architecture implementation as per the paper
 	'''
@@ -14,23 +14,20 @@ def LeNet_baseline(input_shape=(32,32,1), num_classes):
 	model.add(Conv2D(input_shape=input_shape,
 					 filters=6, 
 					 kernel_size=(5,5),
-					 stride=1,
 					 activation="tanh"))
 	# Average Pooling, output = (14,14,6)
 	model.add(AveragePooling2D(pool_size=(2,2),
-							   stride=2))
+							   strides=2))
 	# second conv layer, output=(10,10,16)
 	model.add(Conv2D(filters=16, 
 					 kernel_size=(5,5),
-					 stride=1,
 					 activation="tanh"))
 	# Average Pooling, output=(5,5,16)
 	model.add(AveragePooling2D(pool_size=(2,2),
-							   stride=2))
+							   strides=2))
 	# third conv layer, output=(1,1,120)
 	model.add(Conv2D(filters=120, 
 					 kernel_size=(5,5),
-					 stride=1,
 					 activation="tanh"))
 
 	# FC layers
@@ -41,7 +38,7 @@ def LeNet_baseline(input_shape=(32,32,1), num_classes):
 	return model
 
 
-def LeNet_modified(input_shape=(32,32,1), num_classes):
+def LeNet_modified(num_classes, input_shape=(32,32,1)):
 	'''
 	Modified implementation using LeNet as the backbone architecture
 		1. Uses Relu activation instead of tanh
@@ -55,25 +52,22 @@ def LeNet_modified(input_shape=(32,32,1), num_classes):
 	model.add(Conv2D(input_shape=input_shape,
 					 filters=6, 
 					 kernel_size=(5,5),
-					 stride=1,
 					 activation="relu"))
 	model.add(BatchNormalization())
 	# Average Pooling, output = (14,14,6)
 	model.add(MaxPooling2D(pool_size=(2,2),
-							   stride=2))
+							   strides=2))
 	# second conv layer, output=(10,10,16)
 	model.add(Conv2D(filters=16, 
 					 kernel_size=(5,5),
-					 stride=1,
 					 activation="relu"))
 	model.add(BatchNormalization())
 	# Average Pooling, output=(5,5,16)
 	model.add(MaxPooling2D(pool_size=(2,2),
-							   stride=2))
+							   strides=2))
 	# third conv layer, output=(1,1,120)
 	model.add(Conv2D(filters=120, 
 					 kernel_size=(5,5),
-					 stride=1,
 					 activation="relu"))
 	model.add(BatchNormalization())
 

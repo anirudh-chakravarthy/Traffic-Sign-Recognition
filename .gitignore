@@ -1,2 +1,7 @@
-**.DS_Store
-**.pyc
+**/.DS_Store
+**/*.pyc
+**/_pycache__
+# virtual environment
+env/
+# log directory
+logs/
