@@ -35,7 +35,7 @@ def one_hot(labels, num_classes=43):
 # set keras callbacks
 def get_callbacks(ckpt_dir, model_name):
 	ckpt_path = os.path.join(ckpt_dir, str.lower(model_name) + '.hdf5')
-	earlystop = EarlyStopping(monitor='val_acc', patience=10, verbose=1, restore_best_weights=False)
+	earlystop = EarlyStopping(monitor='val_acc', patience=5, verbose=1, restore_best_weights=False)
 	reducelr = ReduceLROnPlateau(monitor='val_acc', factor=0.5, patience=3, verbose=1, min_lr=1e-6)
 	modelckpt = ModelCheckpoint(ckpt_path, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 	tb = TensorBoard()
@@ -45,17 +45,17 @@ def get_callbacks(ckpt_dir, model_name):
 # visualize train and validation accuracy
 def visualize(model_history):
 	# Training plots
-	epochs = [i for i in range(1, len(history.history['loss'])+1)]
+	epochs = [i for i in range(1, len(model_history.history['loss'])+1)]
 
-	plt.plot(epochs, history.history['loss'], color='blue', label="training_loss")
-	plt.plot(epochs, history.history['val_loss'], color='red', label="validation_loss")
+	plt.plot(epochs, model_history.history['loss'], color='blue', label="training_loss")
+	plt.plot(epochs, model_history.history['val_loss'], color='red', label="validation_loss")
 	plt.legend(loc='best')
 	plt.title('loss')
 	plt.xlabel('epoch')
 	plt.show()
 
-	plt.plot(epochs, history.history['acc'], color='blue', label="training_accuracy")
-	plt.plot(epochs, history.history['val_acc'], color='red',label="validation_accuracy")
+	plt.plot(epochs, model_history.history['acc'], color='blue', label="training_accuracy")
+	plt.plot(epochs, model_history.history['val_acc'], color='red',label="validation_accuracy")
 	plt.legend(loc='best')
 	plt.title('accuracy')
 	plt.xlabel('epoch')
