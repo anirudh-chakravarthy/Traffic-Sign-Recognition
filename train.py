@@ -71,7 +71,7 @@ if __name__ == '__main__':
     															LeNet_modified, AlexNet, VGG16 and VGG19 (default: LeNet_baseline)')
     parser.add_argument('-c', '--checkpoint', default='./checkpoint', help='path to checkpoint directory')
     parser.add_argument('-b', '--batch_size', default=1, type=int, help='batch size (default: 1)')
-    parser.add_argument('-e', '--epochs', default=20, type=int, help='number of epochs to run (default: 20)')
+    parser.add_argument('-e', '--epochs', default=25, type=int, help='number of epochs to run (default: 25)')
     args = parser.parse_args()
 
     model = train(args)
