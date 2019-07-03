@@ -9,7 +9,7 @@ def AlexNet(num_classes, input_shape=(227,227,3)):
 	NOTE: Input size is (227,227,3), not (224,224,3) as Andrej Karpathy mentioned in his CS231n course.
 	'''
 	model = Sequential()
-	kernel_initializer='he_normal'
+	kernel_initializer = 'he_normal'
 
 	# first block
 	model.add(Conv2D(input_shape=input_shape,

@@ -9,6 +9,7 @@ from keras.callbacks import ReduceLROnPlateau, EarlyStopping, ModelCheckpoint, T
 from keras.utils import to_categorical
 import matplotlib.pyplot as plt
 
+
 # get training images from directory
 def input_preprocess(base_dir, input_shape, num_classes=43):
 	x, y = [], []
@@ -34,7 +35,7 @@ def one_hot(labels, num_classes=43):
 
 # set keras callbacks
 def get_callbacks(ckpt_dir, model_name):
-	ckpt_path = os.path.join(ckpt_dir, str.lower(model_name) + '.hdf5')
+	ckpt_path = os.path.join(ckpt_dir, model_name + '.hdf5')
 	earlystop = EarlyStopping(monitor='val_acc', patience=5, verbose=1, restore_best_weights=False)
 	reducelr = ReduceLROnPlateau(monitor='val_acc', factor=0.5, patience=3, verbose=1, min_lr=1e-6)
 	modelckpt = ModelCheckpoint(ckpt_path, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
