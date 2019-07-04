@@ -2,8 +2,7 @@
 Traffic sign classification on the German Traffic Sign Recognition Dataset.
 
 ## Requirements
-To install the necessary packages, run:
-`pip install -r requirements.txt`
+The project uses Python3.6 with Keras (Tensorflow backend).
 
 The GTSRB dataset can be downloaded from [this link.](https://sid.erda.dk/public/archives/daaeac0d7ce1152aea9b61d9f1e19370/published-archive.html)
 
